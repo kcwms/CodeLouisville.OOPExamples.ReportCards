@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/inheritance-example.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/CodeLouisville.OOPExamples.ReportCards.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",

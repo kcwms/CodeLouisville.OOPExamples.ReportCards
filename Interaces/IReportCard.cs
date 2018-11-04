@@ -8,5 +8,7 @@ namespace CodeLouisville.OOPExamples.ReportCards
         string LastName { get; set; }
         string ClassName{get;set;}
         string Instructor{get;set;}
+
+        string TitleCard{get;}
     }
 }

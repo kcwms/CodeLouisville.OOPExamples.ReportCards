@@ -2,25 +2,29 @@ using System;
 
 namespace CodeLouisville.OOPExamples.ReportCards
 {
-    public class SignedReportCard : IReportCard
+    public class SignedReportCard : UnsignedReportCard
     {
-        public decimal Grade { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string ClassName { get; set; }
-        public string Instructor { get; set; }
-
+        public SignedReportCard(UnsignedReportCard obj)
+        {
+            this.ClassName = obj.ClassName;
+            this.FirstName = obj.FirstName;
+            this.LastName = obj.LastName;
+            this.Grade = obj.Grade;
+            this.Instructor = obj.Instructor;
+            this.TitleCard = "\n============================="
+            + "\nThe Signed Report Card"
+            + "\n=============================";
+        }
         public DateTime? DateSigned { get; set; }
         public string ParentName { get; set; }
 
+
+        //replacing the logic in UnsignedReportCard.ToString()
         public override string ToString()
         {
             var isSigned = !string.IsNullOrWhiteSpace(ParentName) && DateSigned.HasValue;
 
-            return $"Student:  {FirstName ?? "<first name>"} {LastName ?? "<last name>"}"
-            + $"\nClass:  {ClassName ?? "<class name>"}"
-            + $"\nInstructor:  {Instructor ?? ""}"
-            + $"\nGPA:  {Grade}"
+            return  base.ToString()
             + (isSigned ? $"\nSigned by {ParentName} on {DateSigned.Value.ToShortDateString()}" : "\nMissing Valid Signature and/or Date");
         }
     }

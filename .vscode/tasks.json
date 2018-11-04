@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/inheritance-example.csproj"
+                "${workspaceFolder}/CodeLouisville.OOPExamples.ReportCards.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

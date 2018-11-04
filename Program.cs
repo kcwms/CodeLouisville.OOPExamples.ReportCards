@@ -10,22 +10,17 @@ namespace CodeLouisville.OOPExamples.ReportCards
         static void Main(string[] args)
         {
             var reportCards = Program.GetAllReportCards();
+
+            //polymorphism and inheritanse allows us to
+            //to write this one piece of logic
+            //that behaves 
             foreach (var rptCard in reportCards)
             {
-                string cardType = "";                
-                if(rptCard is SignedReportCard)
-                    cardType = "Signed";
-                if(rptCard is UnsignedReportCard)
-                    cardType = "Unsigned";
-                if(rptCard is SubmittedReportCard)
-                    cardType = "Submitted";
-
-                Console.WriteLine("=============================");
-                Console.WriteLine($"The {cardType} Report Card:");
-                Console.WriteLine("=============================");
+                Console.WriteLine(rptCard.TitleCard);
                 Console.WriteLine(rptCard.ToString());
                 Console.WriteLine();
             }
+
             Console.WriteLine("enter to close");
             Console.ReadLine();
         }
@@ -34,39 +29,25 @@ namespace CodeLouisville.OOPExamples.ReportCards
         {
             List<IReportCard> reportCards = new List<IReportCard>();
             
-            reportCards.Add(
-                new SignedReportCard(){ClassName = "Physics"
-                ,Instructor = "Dr. Knobbs"
-                ,Grade = 1.75M
-                ,FirstName = "Tony"
-                ,LastName = "Stark"
-                ,DateSigned = new DateTime(2018,11,2)
-                ,ParentName = "Mr. Stark"}
-             );
-             
-             reportCards.Add(
-                 new UnsignedReportCard(){
+           var rptCard =new UnsignedReportCard(){
                      ClassName = "History"
                      ,Instructor = "Dr. Jones"
                      ,Grade = 3.4M
                      ,FirstName = "Peter"
-                     ,LastName = "Parker"}
-             );
+                     ,LastName = "Parker"};
 
-             reportCards.Add(
-                 new SubmittedReportCard(){
-                     ClassName = "Basket Weaving"
-                     ,Instructor = "The Artist"
-                     ,Grade = 4.00M
-                     ,FirstName = "Steve"
-                     ,LastName = "Rodgers"
-                     ,ParentName = "Bucky Barnes"
-                     ,DateSigned = new DateTime(1945,7,4)
-                     ,UniversityName = "American University"
-                     ,DateSubmitted = new DateTime(1945, 6,6)
-                 }
-             );
+            var signedRptCard = new SignedReportCard(rptCard);
+             signedRptCard.DateSigned = new DateTime(2018,7,5);
+             signedRptCard.ParentName = "Uncle Ben";
+
+             var submittedRptCard = new SubmittedReportCard(signedRptCard);
+             submittedRptCard.UniversityName = "American University";
+             submittedRptCard.DateSubmitted = new DateTime(2018,10,16);
              
+             reportCards.Add(rptCard);
+             reportCards.Add(signedRptCard);
+             reportCards.Add(submittedRptCard);
+
              return reportCards;
         }
     }
