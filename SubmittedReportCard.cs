@@ -13,6 +13,8 @@ namespace CodeLouisville.OOPExamples.ReportCards
             + "\n=============================";
         }
 
+        //the following properties are the only thing that differentiates me and a SignedReportCard
+        //I'll inherit all public and protected properties from SignedReportCard
         public DateTime? DateSubmitted { get; set; }
         public string UniversityName { get; set; }
 

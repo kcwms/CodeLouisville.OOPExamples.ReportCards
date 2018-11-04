@@ -15,6 +15,9 @@ namespace CodeLouisville.OOPExamples.ReportCards
             + "\nThe Signed Report Card"
             + "\n=============================";
         }
+        
+        //the following properties are the only thing that differentiates me from an UnsignedReportCard
+        //I'll inherit all public and protected properties from UnsignedReportCard
         public DateTime? DateSigned { get; set; }
         public string ParentName { get; set; }
 
@@ -24,7 +27,7 @@ namespace CodeLouisville.OOPExamples.ReportCards
         {
             var isSigned = !string.IsNullOrWhiteSpace(ParentName) && DateSigned.HasValue;
 
-            return  base.ToString()
+            return base.ToString()
             + (isSigned ? $"\nSigned by {ParentName} on {DateSigned.Value.ToShortDateString()}" : "\nMissing Valid Signature and/or Date");
         }
     }

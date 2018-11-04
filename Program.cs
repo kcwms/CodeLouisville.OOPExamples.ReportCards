@@ -13,7 +13,7 @@ namespace CodeLouisville.OOPExamples.ReportCards
 
             //polymorphism and inheritanse allows us to
             //to write this one piece of logic
-            //that behaves 
+            //that behaves differently
             foreach (var rptCard in reportCards)
             {
                 Console.WriteLine(rptCard.TitleCard);
@@ -25,10 +25,12 @@ namespace CodeLouisville.OOPExamples.ReportCards
             Console.ReadLine();
         }
 
-        static IList<IReportCard> GetAllReportCards()
+        /// 
+        static IList<UnsignedReportCard> GetAllReportCards()
         {
-            List<IReportCard> reportCards = new List<IReportCard>();
+            List<UnsignedReportCard> reportCards = new List<UnsignedReportCard>();
             
+            //we gave this report card to the student to take home
            var rptCard =new UnsignedReportCard(){
                      ClassName = "History"
                      ,Instructor = "Dr. Jones"
@@ -36,10 +38,12 @@ namespace CodeLouisville.OOPExamples.ReportCards
                      ,FirstName = "Peter"
                      ,LastName = "Parker"};
 
+            //after parent returned the report card
             var signedRptCard = new SignedReportCard(rptCard);
              signedRptCard.DateSigned = new DateTime(2018,7,5);
              signedRptCard.ParentName = "Uncle Ben";
 
+            //we are now sending this report card to the university
              var submittedRptCard = new SubmittedReportCard(signedRptCard);
              submittedRptCard.UniversityName = "American University";
              submittedRptCard.DateSubmitted = new DateTime(2018,10,16);

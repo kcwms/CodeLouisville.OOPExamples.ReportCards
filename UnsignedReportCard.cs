@@ -1,6 +1,6 @@
 namespace CodeLouisville.OOPExamples.ReportCards
 {
-    public class UnsignedReportCard : IReportCard
+    public class UnsignedReportCard 
     {
         public UnsignedReportCard()
         {
